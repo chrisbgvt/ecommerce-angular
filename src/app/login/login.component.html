@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center align-items-center">
+    <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="userName">Username</label>
+            <input #userName="ngModel" type="text" id="username" name="userName" ngModel class="form-control" required minlength="3" />
+        </div>
+
+        <ng-container *ngIf="userName.touched && userName.invalid">
+            <p *ngIf="userName.errors['required']" class="error">
+                Username is required.
+            </p>
+            <p *ngIf="userName.errors['minlength']" class="error">
+                Username must be at least 3 characters long.
+            </p>
+        </ng-container>
+    
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="pass">Password</label>
+            <input #pass="ngModel" type="password" id="pass" name="pass" ngModel class="form-control" required minlength="6" />
+        </div>
+
+        <ng-container *ngIf="pass.touched && pass.invalid">
+            <p *ngIf="pass.errors['required']" class="error">
+                Password is required.
+            </p>
+            <p *ngIf="pass.errors['minlength']" class="error">
+                Password must be at least 6 characters long.
+            </p>
+        </ng-container>
+    
+        <!-- Submit button -->
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-4">Sign in</button>
+    
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Not a member? <a [routerLink]="['/register']">Register</a></p>
+        </div>
+    </form>
+</div>

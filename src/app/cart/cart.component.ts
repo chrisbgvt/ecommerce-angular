@@ -22,11 +22,11 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     const productId = this.activatedRoute.snapshot.params['id'];
     
-    this.productService.getProductById(productId).subscribe({
-      next: product => {
-        this.product = product;
-      }
-    })
+    // this.productService.getProductById(productId).subscribe({
+    //   next: product => {
+    //     this.product = product;
+    //   }
+    // })
 
 
     
