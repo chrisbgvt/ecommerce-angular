@@ -21,4 +21,8 @@ export class AuthService {
     return this.HttpClient.post<IUser>('https://fakestoreapi.com/auth/login', body)
     .pipe(tap(body => this.currentUser = body));
   }
+
+  register(body: IUser): Observable<IUser> {
+    return this.HttpClient.post<IUser>('https://fakestoreapi.com/users', body);
+  }
 }

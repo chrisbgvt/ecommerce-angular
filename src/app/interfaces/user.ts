@@ -9,7 +9,7 @@ export interface IUser {
     address:{
         city: string,
         street: string,
-        number:3,
+        number: number,
         zipcode: string,
         geolocation:{
             lat: string,
