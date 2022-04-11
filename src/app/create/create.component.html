@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center align-items-center">
+    <form #createForm="ngForm" (ngSubmit)="createProduct(createForm)" class="w-75">
+        <div class="form-group mb-4">
+            <label for="title">Title</label>
+            <input #title="ngModel" type="text" class="form-control" ngModel name="title" id="title" aria-describedby="title" placeholder="Title" required>
+        </div>
+
+        <ng-container *ngIf="title.touched && title.invalid">
+            <p *ngIf="title.errors['required']" class="error">
+                Title is required.
+            </p>
+        </ng-container>
+
+        <div class="form-group mb-4">
+            <label for="price">Price</label>
+            <input #price="ngModel" type="number" name="price" ngModel class="form-control" id="price" placeholder="Price" required>
+        </div>
+
+        <ng-container *ngIf="price.touched && price.invalid">
+            <p *ngIf="price.errors['required']" class="error">
+                Price is required.
+            </p>
+        </ng-container>
+
+        <div class="form-group mb-4">
+            <label for="description">Description</label>
+            <input #description="ngModel" type="text" class="form-control" name="description" ngModel id="description" placeholder="Description" required minlength="10">
+        </div>
+
+        <ng-container *ngIf="description.touched && description.invalid">
+            <p *ngIf="description.errors['required']" class="error">
+                Description is required.
+            </p>
+            <p *ngIf="description.errors['minlength']" class="error">
+                Description must be at least 10 characters long.
+            </p>
+        </ng-container>
+
+        <div class="form-group mb-4">
+            <label for="image">Image</label>
+            <input #image="ngModel" type="text" name="image" ngModel class="form-control" id="image" placeholder="image" required>
+        </div>
+
+        <ng-container *ngIf="image.touched && image.invalid">
+            <p *ngIf="image.errors['required']" class="error">
+                Image is required.
+            </p>
+        </ng-container>
+        
+        <div class="form-group mb-4">
+            <label for="category">Category</label>
+            <input #category="ngModel" type="text" name="category" ngModel class="form-control" id="category" placeholder="category" required>
+        </div>
+
+        <ng-container *ngIf="category.touched && category.invalid">
+            <p *ngIf="category.errors['required']" class="error">
+                Category is required.
+            </p>
+        </ng-container>
+
+        <button type="submit" [disabled]="createForm.invalid" class="btn btn-primary mb-4 w-100">Submit</button>
+    </form>
+</div>
+

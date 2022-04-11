@@ -27,4 +27,16 @@ export class ProductServiceService {
   getCart(user: number): Observable<IProductCart> {
     return this.HttpClient.get<IProductCart>('https://fakestoreapi.com/carts/' + user);
   }
+
+  addNewProduct(product: IProduct): Observable<IProduct> {
+    return this.HttpClient.post<IProduct>('https://fakestoreapi.com/products', product);
+  }
+
+  updateProduct(id: number, product: IProduct): Observable<IProduct> {
+    return this.HttpClient.put<IProduct>('https://fakestoreapi.com/products/' + id, product);
+  }
+
+  deleteProduct(id: number): Observable<IProduct> {
+    return this.HttpClient.delete<IProduct>('https://fakestoreapi.com/products/' + id);
+  }
 }

@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RegisterComponent } from './register/register.component';
     CartComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

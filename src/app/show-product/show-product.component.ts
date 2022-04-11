@@ -49,4 +49,12 @@ export class ShowProductComponent implements OnInit {
     })
   }
 
+  deleteProduct(): void {
+    const productId = this.activatedRoute.snapshot.params['id'];
+
+    this.productService.deleteProduct(productId).subscribe(() => {
+      this.router.navigate(['/catalog']);
+    })
+  }
+
 }

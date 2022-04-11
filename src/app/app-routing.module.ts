@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: "register", 
     component: RegisterComponent
+  },
+  {
+    path: "create", 
+    component: CreateComponent
+  },
+  {
+    path: "edit/:id", 
+    component: EditComponent
   },
   {
     path: "**", 
