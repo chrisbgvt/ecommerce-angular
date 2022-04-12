@@ -25,6 +25,12 @@ export class ShowProductComponent implements OnInit {
     this.productService.getProductById(productId).subscribe({
       next: product => {
         this.product = product;
+        let data= JSON.parse(localStorage.getItem('productData'));
+        if (productId == data.id) {
+          this.product = data;
+        }
+        
+        
       }
     })
   }
@@ -32,9 +38,12 @@ export class ShowProductComponent implements OnInit {
   addToCart(): void {
     const productId = this.activatedRoute.snapshot.params['id'];
 
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
     const body: IProductCart =  {
-      userId: 1,
-      date: '2022-02-03',
+      userId: 50,
+      date: date,
       products: [{productId:productId,quantity:1, title: this.product.title,
         price: this.product.price,
         image: this.product.image}]
@@ -43,6 +52,7 @@ export class ShowProductComponent implements OnInit {
     // this.router.navigate(['/product/' + productId + '/cart']);
 
     this.productService.submitCart(body).subscribe(() => {
+      localStorage.setItem('cart', JSON.stringify(body));
       this.router.navigate(['/cart']);
       console.log(body);
       
@@ -55,6 +65,11 @@ export class ShowProductComponent implements OnInit {
     this.productService.deleteProduct(productId).subscribe(() => {
       this.router.navigate(['/catalog']);
     })
+  }
+
+  getUserData() {
+    let data = JSON.parse(localStorage.getItem('userData'));
+    return data.userName;
   }
 
 }

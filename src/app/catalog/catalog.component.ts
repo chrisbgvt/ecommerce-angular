@@ -11,7 +11,8 @@ import { ProductServiceService } from '../product-service.service';
 })
 export class CatalogComponent implements OnInit {
 
-  products: IProduct[] = [];
+  products: IProduct[];
+  data: any;
 
   constructor(private productService: ProductServiceService) { }
 
@@ -19,8 +20,14 @@ export class CatalogComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: products => {
         this.products = products;
+        this.data = JSON.parse(localStorage.getItem('productData'));
+
+
+        this.data == null ? this.data = '' : this.products.push(this.data);
+        
       }
     })
+
   }
 
   cartAdd(): void {

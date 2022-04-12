@@ -10,33 +10,35 @@ import { IProductCart } from './interfaces/productCart';
 
 export class ProductServiceService {
 
+  url: string = 'https://fakestoreapi.com';
+
   constructor(private HttpClient: HttpClient) { }
 
   getAllProducts(): Observable<IProduct []> {
-    return this.HttpClient.get<IProduct []>('https://fakestoreapi.com/products');
+    return this.HttpClient.get<IProduct []>(this.url + '/products');
   }
 
   getProductById(id: number): Observable<IProduct> {
-    return this.HttpClient.get<IProduct>('https://fakestoreapi.com/products/' + id);
+    return this.HttpClient.get<IProduct>(this.url + '/products/' + id);
   }
 
   submitCart(cartProduct: IProductCart): Observable<IProductCart> {
-    return this.HttpClient.post<IProductCart>('https://fakestoreapi.com/carts', cartProduct);
+    return this.HttpClient.post<IProductCart>(this.url + '/carts', cartProduct);
   }
 
   getCart(user: number): Observable<IProductCart> {
-    return this.HttpClient.get<IProductCart>('https://fakestoreapi.com/carts/' + user);
+    return this.HttpClient.get<IProductCart>(this.url + '/carts/' + user);
   }
 
   addNewProduct(product: IProduct): Observable<IProduct> {
-    return this.HttpClient.post<IProduct>('https://fakestoreapi.com/products', product);
+    return this.HttpClient.post<IProduct>(this.url + '/products', product);
   }
 
   updateProduct(id: number, product: IProduct): Observable<IProduct> {
-    return this.HttpClient.put<IProduct>('https://fakestoreapi.com/products/' + id, product);
+    return this.HttpClient.put<IProduct>(this.url + '/products/' + id, product);
   }
 
   deleteProduct(id: number): Observable<IProduct> {
-    return this.HttpClient.delete<IProduct>('https://fakestoreapi.com/products/' + id);
+    return this.HttpClient.delete<IProduct>(this.url + '/products/' + id);
   }
 }

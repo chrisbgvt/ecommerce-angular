@@ -16,6 +16,8 @@
         </div>
     </section>
 </div>
-<div *ngIf="!products">
-    Loading...
+<div class="container d-flex justify-content-center align-items-center mx-auto mt-5" *ngIf="!products">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+    </div>
 </div>

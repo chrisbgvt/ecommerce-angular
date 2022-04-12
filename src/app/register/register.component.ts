@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit {
   // lon: string;
   // phone: string;
 
+  user: IUser;
+
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registerForm.value).subscribe({
       next: (user) => {
         console.log(user);
+        // localStorage.setItem('userData', registerForm.value);
         this.router.navigate(['']);
       },
       error: (error) => {
