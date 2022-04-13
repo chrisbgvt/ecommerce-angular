@@ -24,6 +24,7 @@ export class AuthService {
 
   login(body: IUserLogin): Observable<IUserLogin> {
     localStorage.setItem('userData', JSON.stringify(body));
+    this.currentUser = JSON.parse(localStorage.getItem('userData'));
     this.isLogged = true;
     console.log(this.isLogged);
     return this.HttpClient.post<IUserLogin>(this.url + '/auth/login', body);

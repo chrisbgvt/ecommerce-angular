@@ -18,6 +18,10 @@ export class ProductServiceService {
     return this.HttpClient.get<IProduct []>(this.url + '/products');
   }
 
+  getTopSellProducts(): Observable<IProduct []> {
+    return this.HttpClient.get<IProduct []>(this.url + '/products?limit=4');
+  }
+
   getProductById(id: number): Observable<IProduct> {
     return this.HttpClient.get<IProduct>(this.url + '/products/' + id);
   }
