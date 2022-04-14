@@ -16,6 +16,10 @@ import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     LoginComponent,
     RegisterComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    FooterComponent,
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     FormsModule,
     NgHttpLoaderModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

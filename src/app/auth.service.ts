@@ -25,6 +25,7 @@ export class AuthService {
   login(body: IUserLogin): Observable<IUserLogin> {
     localStorage.setItem('userData', JSON.stringify(body));
     this.currentUser = JSON.parse(localStorage.getItem('userData'));
+    localStorage.setItem('isLogged', JSON.stringify(true));
     this.isLogged = true;
     console.log(this.isLogged);
     return this.HttpClient.post<IUserLogin>(this.url + '/auth/login', body);
@@ -36,9 +37,11 @@ export class AuthService {
     return this.HttpClient.post<IUser>(this.url + '/users', body);
   }
 
-  logout(): void {
-    localStorage.clear();
-    this.isLogged = false;
-    console.log(this.isLogged)
+  loggedIn() {
+    if (localStorage.getItem('isLogged') == "true") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

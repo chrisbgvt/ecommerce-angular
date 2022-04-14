@@ -26,7 +26,9 @@ export class ShowProductComponent implements OnInit {
       next: product => {
         this.product = product;
         let data= JSON.parse(localStorage.getItem('productData'));
-        if (productId == data.id) {
+        
+
+        if (productId > 20) {
           this.product = data;
         }
         

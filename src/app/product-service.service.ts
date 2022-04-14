@@ -34,8 +34,8 @@ export class ProductServiceService {
     return this.HttpClient.get<IProductCart>(this.url + '/carts/' + user);
   }
 
-  addNewProduct(product: IProduct): Observable<IProduct> {
-    return this.HttpClient.post<IProduct>(this.url + '/products', product);
+  addNewProduct(product: IProduct): Observable<IProduct []> {
+    return this.HttpClient.post<IProduct []>(this.url + '/products', product);
   }
 
   updateProduct(id: number, product: IProduct): Observable<IProduct> {

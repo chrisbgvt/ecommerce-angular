@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['']">
+        <img width="60" height="auto" src="https://mpng.subpng.com/20180401/ykq/kisspng-shopping-cart-computer-icons-online-shopping-clip-online-shop-5ac11205d8e469.5194885815226025018884.jpg" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/create']">Create</a>
+        </li>
+        
+            <li class="nav-item" *ngIf="this.isLoggedIn == true">
+                <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+            </li>
+            <li class="nav-item" *ngIf="this.isLoggedIn == true">
+                <a class="nav-link" (click)="logout()" href="javascript:void(0)">Logout</a>
+            </li>
+        
+        
+            <li class="nav-item" *ngIf="this.isLoggedIn == false">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="this.isLoggedIn == false">
+                <a class="nav-link" [routerLink]="['/register']">Register</a>
+            </li>
+      </ul>
+    </div>
+  </nav>
