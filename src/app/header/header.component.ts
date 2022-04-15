@@ -9,12 +9,12 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = JSON.parse(localStorage.getItem('isLogged'));
+  
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     console.log(this.isLoggedIn);
-    
   }
 
   logout(): void {

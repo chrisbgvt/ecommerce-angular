@@ -31,7 +31,13 @@ export class ShowProductComponent implements OnInit {
         if (productId > 20) {
           this.product = data;
         }
+
+        let edited = JSON.parse(localStorage.getItem('editedProduct'));
         
+
+        if (edited.id == productId) {
+          this.product = edited;
+        }
         
       }
     })
@@ -64,8 +70,13 @@ export class ShowProductComponent implements OnInit {
   deleteProduct(): void {
     const productId = this.activatedRoute.snapshot.params['id'];
 
-    this.productService.deleteProduct(productId).subscribe(() => {
-      this.router.navigate(['/catalog']);
+    this.productService.deleteProduct(productId).subscribe({
+      next: () => {
+        this.router.navigate(['/catalog']);
+      },
+      error: (error) => {
+        alert(error.message);
+      }
     })
   }
 

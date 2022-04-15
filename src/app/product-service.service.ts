@@ -43,6 +43,7 @@ export class ProductServiceService {
   }
 
   deleteProduct(id: number): Observable<IProduct> {
+    localStorage.setItem('deletedProduct', JSON.stringify(id));
     return this.HttpClient.delete<IProduct>(this.url + '/products/' + id);
   }
 }

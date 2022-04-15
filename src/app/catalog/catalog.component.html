@@ -1,13 +1,28 @@
 <section class="my-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-4" *ngFor="let product of products">
-                <div class="card h-100">
-                    <img class="card-img-top" [src]="product.image" alt="Card image cap" height="200px">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ product.title }}</h5>
-                        <p class="card-text">{{ product.price }} lv.</p>
-                        <a [routerLink]="['/product', product.id]" class="btn btn-primary mt-auto">Show more</a>
+            <div class="col-md-3">
+                <h6>Filter</h6>
+                <div #filterDiv class="form-check" *ngFor="let name of names">
+                    <input #inputFilter (click)="filterCatalog($event)" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label #labelFilter class="form-check-label text-truncate w-100" for="flexCheckChecked">
+                      {{name}}
+                    </label>
+                </div>
+                <button #resetButton class="btn btn-primary" disabled (click)="resetFilters($event)">Reset</button>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-4 mb-4" *ngFor="let product of products">
+                        <div class="card h-100">
+                            <img class="card-img-top" [src]="product.image" alt="Card image cap" height="200px">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">{{ product.price }} lv.</p>
+                                <a [routerLink]="['/product', product.id]" class="btn btn-primary mt-auto">Show more</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,17 @@ export class EditComponent implements OnInit {
     
     this.productService.getProductById(productId).subscribe({
       next: product => {
-        this.product = product;
+        if(productId > 20) {
+          this.product = JSON.parse(localStorage.getItem('productData'));
+        } else if (JSON.parse(localStorage.getItem('editedProduct')).id == productId) {
+          this.product = JSON.parse(localStorage.getItem('editedProduct'));
+        } else {
+          this.product = product;
+        }
+
+      },
+      error: (error) => {
+        alert(error.message);
       }
     })
   }
@@ -30,8 +40,8 @@ export class EditComponent implements OnInit {
 
     this.productService.updateProduct(productId, editForm.value).subscribe({
       next: (product) => {
-        console.log(product);
-        this.router.navigate(['/product/' + productId]);
+        localStorage.setItem('editedProduct', JSON.stringify(product));
+        this.router.navigate(['/catalog']);
       },
       error: (error) => {
         alert(error.message);
